@@ -68,6 +68,7 @@ pi
 | OpenCode Go | `OPENCODE_API_KEY` | `opencode-go` |
 | Hugging Face | `HF_TOKEN` | `huggingface` |
 | Kimi For Coding | `KIMI_API_KEY` | `kimi-coding` |
+| CodeBuddy | `CODEBUDDY_AUTH_TOKEN` or `CODEBUDDY_API_KEY` | `codebuddy` |
 | MiniMax | `MINIMAX_API_KEY` | `minimax` |
 | MiniMax (China) | `MINIMAX_CN_API_KEY` | `minimax-cn` |
 
@@ -82,10 +83,13 @@ Store credentials in `~/.pi/agent/auth.json`:
   "anthropic": { "type": "api_key", "key": "sk-ant-..." },
   "openai": { "type": "api_key", "key": "sk-..." },
   "google": { "type": "api_key", "key": "..." },
+  "codebuddy": { "type": "api_key", "key": "CODEBUDDY_AUTH_TOKEN" },
   "opencode": { "type": "api_key", "key": "..." },
   "opencode-go": { "type": "api_key", "key": "..." }
 }
 ```
+
+For CodeBuddy, `CODEBUDDY_BASE_URL` can override the default `https://copilot.tencent.com/v2` endpoint. On iOA/internal networks, use `https://tencent.sso.codebuddy.cn/v2`.
 
 The file is created with `0600` permissions (user read/write only). Auth file credentials take priority over environment variables.
 

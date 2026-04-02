@@ -354,9 +354,14 @@ function createClient(
 		Object.assign(headers, optionsHeaders);
 	}
 
+	let baseURL = model.baseUrl;
+	if (model.provider === "codebuddy" && process.env.CODEBUDDY_BASE_URL) {
+		baseURL = process.env.CODEBUDDY_BASE_URL;
+	}
+
 	return new OpenAI({
 		apiKey,
-		baseURL: model.baseUrl,
+		baseURL,
 		dangerouslyAllowBrowser: true,
 		defaultHeaders: headers,
 	});
@@ -795,6 +800,12 @@ function detectCompat(model: Model<"openai-completions">): Required<OpenAIComple
 
 	const isZai = provider === "zai" || baseUrl.includes("api.z.ai");
 
+	const isCodeBuddy =
+		provider === "codebuddy" ||
+		baseUrl.includes("copilot.tencent.com") ||
+		baseUrl.includes("codebuddy.cn") ||
+		baseUrl.includes("codebuddy.ai");
+
 	const isNonStandard =
 		provider === "cerebras" ||
 		baseUrl.includes("cerebras.ai") ||
@@ -804,7 +815,8 @@ function detectCompat(model: Model<"openai-completions">): Required<OpenAIComple
 		baseUrl.includes("deepseek.com") ||
 		isZai ||
 		provider === "opencode" ||
-		baseUrl.includes("opencode.ai");
+		baseUrl.includes("opencode.ai") ||
+		isCodeBuddy;
 
 	const useMaxTokens = baseUrl.includes("chutes.ai");
 

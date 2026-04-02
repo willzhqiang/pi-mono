@@ -113,6 +113,7 @@ For each built-in provider, pi maintains a list of tool-capable models, updated 
 - OpenCode Go
 - Hugging Face
 - Kimi For Coding
+- CodeBuddy
 - MiniMax
 
 See [docs/providers.md](docs/providers.md) for detailed setup instructions.

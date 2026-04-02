@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added CodeBuddy provider (Tencent Cloud) with `CODEBUDDY_API_KEY` support
+
 ### Breaking Changes
 
 - Removed extension post-transition events `session_switch` and `session_fork`. Extensions should now use `session_start` and inspect `event.reason`, which is now one of `"startup" | "reload" | "new" | "resume" | "fork"`. For `"new"`, `"resume"`, and `"fork"`, `session_start` also includes `previousSessionFile`. This is better because session replacement now fully reloads extensions, so one post-start hook with explicit reason matches the real lifecycle better than two extra non-cancellable post-transition events.

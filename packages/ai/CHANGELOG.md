@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added CodeBuddy provider (Tencent Cloud) with OpenAI-compatible API. Supports Claude, GPT, Gemini, and DeepSeek models via `CODEBUDDY_API_KEY`. Override endpoint with `CODEBUDDY_BASE_URL`.
+
 ### Fixed
 
 - Fixed Anthropic context overflow detection to recognize HTTP 413 `request_too_large` errors, so callers can trigger compaction and retry instead of getting stuck on repeated oversized-image requests ([#2734](https://github.com/badlogic/pi-mono/issues/2734))

@@ -73,6 +73,10 @@ export function getEnvApiKey(provider: any): string | undefined {
 		return process.env.ANTHROPIC_OAUTH_TOKEN || process.env.ANTHROPIC_API_KEY;
 	}
 
+	if (provider === "codebuddy") {
+		return process.env.CODEBUDDY_AUTH_TOKEN || process.env.CODEBUDDY_API_KEY;
+	}
+
 	// Vertex AI supports either an explicit API key or Application Default Credentials
 	// Auth is configured via `gcloud auth application-default login`
 	if (provider === "google-vertex") {

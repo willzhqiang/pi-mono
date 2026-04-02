@@ -67,6 +67,7 @@ Unified LLM API with automatic model discovery, provider configuration, token an
 - **OpenCode Zen**
 - **OpenCode Go**
 - **Kimi For Coding** (Moonshot AI, uses Anthropic-compatible API)
+- **CodeBuddy** (Tencent Cloud, uses OpenAI-compatible API)
 - **Any OpenAI-compatible API**: Ollama, vLLM, LM Studio, etc.
 
 ## Installation
@@ -1029,6 +1030,7 @@ In Node.js environments, you can set environment variables to avoid passing API 
 | MiniMax | `MINIMAX_API_KEY` |
 | OpenCode Zen / OpenCode Go | `OPENCODE_API_KEY` |
 | Kimi For Coding | `KIMI_API_KEY` |
+| CodeBuddy | `CODEBUDDY_AUTH_TOKEN` or `CODEBUDDY_API_KEY` (optional `CODEBUDDY_BASE_URL` for custom endpoint) |
 | GitHub Copilot | `COPILOT_GITHUB_TOKEN` or `GH_TOKEN` or `GITHUB_TOKEN` |
 
 When set, the library automatically uses these keys:
@@ -1043,6 +1045,8 @@ const response = await complete(model, context, {
   apiKey: 'sk-different-key'
 });
 ```
+
+For CodeBuddy, the default endpoint is `https://copilot.tencent.com/v2`. On iOA/internal networks, set `CODEBUDDY_BASE_URL=https://tencent.sso.codebuddy.cn/v2`.
 
 #### Antigravity Version Override
 
